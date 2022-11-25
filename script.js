@@ -18,7 +18,8 @@ const createTask=(evento)=>{
   //const task = document.querySelector("[data-task]");
   //se asigan el espacio vacio
   input.value="";
-  //se hace la variacion del html directamente del script
+  //se hace la variacion del html directamente del script 
+  // con comillas invertidas y ${} para los cambios del dom
   const content= `<div>
   <i class="far fa-check-square icon"></i>
   <span class="task">${value}</span>
