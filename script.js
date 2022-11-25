@@ -1,3 +1,5 @@
+
+(() =>{
 //se toma bautiza al boton con data** para identificar
 //a que seccion se refiere con precision separado del resto de codigo
 const btn = document.querySelector("[data-form-btn]");
@@ -18,19 +20,61 @@ const createTask=(evento)=>{
   //const task = document.querySelector("[data-task]");
   //se asigan el espacio vacio
   input.value="";
+  const taskContainer = document.createElement("div");
+  taskContainer.appendChild(checkComplete());
+  const titelTask = document.createElement("span");
+  titelTask.classList.add("task");
+  titelTask.innerHTML= value;
+  taskContainer.appendChild(titelTask);
   //se hace la variacion del html directamente del script 
   // con comillas invertidas y ${} para los cambios del dom
-  const content= `<div>
-  <i class="far fa-check-square icon"></i>
-  <span class="task">${value}</span>
-  </div>
-  <i class="fas fa-trash-alt trashIcon icon"></i>`;
+  // const content= `
+  // <i class="fas fa-trash-alt trashIcon icon"></i>`;
   //es para insertar la funcion de javascript en html
-  task.innerHTML= content;
-
   //se asigan la ejecucion de la logica de agregar 
+  task.appendChild(taskContainer);
   list.appendChild(task);
-  console.log(content);
 }
 //para tomar accion al hacer click y ejecutar la funcion
 btn.addEventListener("click",createTask);
+
+const checkComplete = () =>{
+  const i = document.createElement("i")
+  i.classList.add("far","fa-check-square","icon");
+  i.addEventListener("click",completeTask);
+  return i;
+}
+
+//EVENT sirve para saber las propuedades de lo que se esta tocando 
+const completeTask=(event) =>{
+  //target es el elemento  que es llamado en el evento y da la posicion 
+const element = event.target
+element.classList.toggle("fas")
+element.classList.toggle("completeIcon")
+element.classList.toggle("far")
+}
+})()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const trash = () =>{
+//   const t = document.createElement("i")
+//   t.classList.add("fas");
+//   t.classList.add("fa-trash-alt");
+//   t.classList.add("trashIcon");
+//   t.classList.add("icon");
+//   return t;
+// }
